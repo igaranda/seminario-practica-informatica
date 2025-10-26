@@ -1,0 +1,17 @@
+com/medicqr/MedicQRRestServer.class
+com/medicqr/dao/PulseraQRDAO.class
+com/medicqr/dao/PerfilInformacionDAO.class
+com/medicqr/model/Persona.class
+com/medicqr/dao/TutorDAO.class
+com/medicqr/dao/DatabaseConnection.class
+com/medicqr/model/PulseraQR.class
+com/medicqr/service/MedicQRService.class
+com/medicqr/model/PerfilInformacion.class
+com/medicqr/MedicQRRestServer$PulserasHandler.class
+com/medicqr/MedicQRRestServer$StatsHandler.class
+com/medicqr/model/Tutor.class
+com/medicqr/MedicQRApplication.class
+com/medicqr/model/Usuario.class
+com/medicqr/MedicQRRestServer$QRHandler.class
+com/medicqr/dao/UsuarioDAO.class
+com/medicqr/util/Utilidades.class
