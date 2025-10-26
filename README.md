@@ -20,12 +20,8 @@ Universidad Empresarial Siglo XXI
 
 - [Descripción del Proyecto](#-descripción-del-proyecto)
 - [Características Principales](#-características-principales)
-- [Requisitos Previos](#-requisitos-previos)
-- [Instalación y Configuración](#-instalación-y-configuración)
 - [Funcionalidades del Menú](#-funcionalidades-del-menú)
-- [Estructura de la Base de Datos](#-estructura-de-la-base-de-datos)
 - [Ejecución del Proyecto](#-ejecución-del-proyecto)
-- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 
 ---
 
