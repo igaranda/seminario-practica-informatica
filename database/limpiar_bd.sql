@@ -14,4 +14,3 @@ TRUNCATE TABLE tutores;
 SET FOREIGN_KEY_CHECKS = 1;
 
 SELECT 'Base de datos limpiada exitosamente. Ejecute la aplicación para crear los 3 datos de demostración.' AS mensaje;
-

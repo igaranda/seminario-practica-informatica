@@ -169,13 +169,10 @@ public class MedicQRApplication {
             System.out.print("Teléfono del tutor: ");
             String tutorTelefono = scanner.nextLine();
             
-            System.out.print("Email del tutor: ");
+            System.out.print("Email del tutor (opcional, presione Enter para omitir): ");
             String tutorEmail = scanner.nextLine();
             
-            System.out.print("Fecha de nacimiento del tutor (YYYY-MM-DD): ");
-            String tutorFechaNacimiento = scanner.nextLine();
-            
-            System.out.print("Relación con el usuario (ej: Padre, Madre, Hijo): ");
+            System.out.print("Relación con el usuario (ej: Padre, Madre, Hijo, Hermano): ");
             String relacionConUsuario = scanner.nextLine();
             
             System.out.println("\n=== DATOS DEL PACIENTE/USUARIO ===");
@@ -185,10 +182,10 @@ public class MedicQRApplication {
             System.out.print("Apellido del paciente: ");
             String usuarioApellido = scanner.nextLine();
             
-            System.out.print("Teléfono del paciente: ");
+            System.out.print("Teléfono del paciente (opcional, presione Enter para omitir): ");
             String usuarioTelefono = scanner.nextLine();
             
-            System.out.print("Email del paciente: ");
+            System.out.print("Email del paciente (opcional, presione Enter para omitir): ");
             String usuarioEmail = scanner.nextLine();
             
             System.out.print("Fecha de nacimiento del paciente (YYYY-MM-DD): ");
@@ -205,25 +202,38 @@ public class MedicQRApplication {
             }
             
             System.out.println("\n=== DATOS MÉDICOS ===");
-            System.out.print("Alergias: ");
+            System.out.print("Alergias (opcional, presione Enter para omitir): ");
             String alergias = scanner.nextLine();
             
-            System.out.print("Medicamentos: ");
+            System.out.print("Medicamentos (opcional, presione Enter para omitir): ");
             String medicamentos = scanner.nextLine();
             
-            System.out.print("Enfermedades crónicas: ");
+            System.out.print("Enfermedades crónicas (opcional, presione Enter para omitir): ");
             String enfermedadesCronicas = scanner.nextLine();
             
             System.out.print("Grupo sanguíneo (A+, A-, B+, B-, AB+, AB-, O+, O-): ");
             String grupoSanguineo = scanner.nextLine();
             
-            System.out.print("Contacto de emergencia: ");
-            String contactoEmergencia = scanner.nextLine();
+            // Preguntar si el tutor es el contacto de emergencia
+            System.out.print("¿El tutor es el contacto de emergencia? (s/n): ");
+            String tutorEsContacto = scanner.nextLine().trim().toLowerCase();
             
-            System.out.print("Teléfono de emergencia: ");
-            String telefonoEmergencia = scanner.nextLine();
+            String contactoEmergencia;
+            String telefonoEmergencia;
             
-            System.out.print("Observaciones médicas: ");
+            if (tutorEsContacto.equals("s") || tutorEsContacto.equals("si") || tutorEsContacto.equals("sí")) {
+                contactoEmergencia = tutorNombre + " " + tutorApellido;
+                telefonoEmergencia = tutorTelefono;
+                System.out.println("[INFO] Usando datos del tutor como contacto de emergencia");
+            } else {
+                System.out.print("Nombre del contacto de emergencia: ");
+                contactoEmergencia = scanner.nextLine();
+                
+                System.out.print("Teléfono de emergencia: ");
+                telefonoEmergencia = scanner.nextLine();
+            }
+            
+            System.out.print("Observaciones médicas (opcional, presione Enter para omitir): ");
             String observacionesMedicas = scanner.nextLine();
             
             System.out.print("¿Requiere atención inmediata? (true/false): ");
@@ -233,7 +243,7 @@ public class MedicQRApplication {
             System.out.println("\n=== DATOS DE LA PULSERA ===");
             
             PulseraQR pulsera = service.registroCompleto(
-                tutorNombre, tutorApellido, tutorTelefono, tutorEmail, tutorFechaNacimiento, relacionConUsuario,
+                tutorNombre, tutorApellido, tutorTelefono, tutorEmail, "", relacionConUsuario,
                 usuarioNombre, usuarioApellido, usuarioTelefono, usuarioEmail, usuarioFechaNacimiento,
                 tieneDiscapacidad, tipoDiscapacidad,
                 alergias, medicamentos, enfermedadesCronicas, grupoSanguineo,

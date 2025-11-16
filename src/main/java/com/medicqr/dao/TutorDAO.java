@@ -21,8 +21,21 @@ public class TutorDAO {
             stmt.setString(1, tutor.getNombre());
             stmt.setString(2, tutor.getApellido());
             stmt.setString(3, tutor.getTelefono());
-            stmt.setString(4, tutor.getEmail());
-            stmt.setString(5, tutor.getFechaNacimiento());
+            
+            // Handle empty email
+            if (tutor.getEmail() == null || tutor.getEmail().trim().isEmpty()) {
+                stmt.setNull(4, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setString(4, tutor.getEmail());
+            }
+            
+            // Handle empty fecha_nacimiento
+            if (tutor.getFechaNacimiento() == null || tutor.getFechaNacimiento().trim().isEmpty()) {
+                stmt.setNull(5, java.sql.Types.DATE);
+            } else {
+                stmt.setString(5, tutor.getFechaNacimiento());
+            }
+            
             stmt.setString(6, tutor.getRelacionConUsuario());
             
             int filasAfectadas = stmt.executeUpdate();
@@ -115,8 +128,21 @@ public class TutorDAO {
             stmt.setString(1, tutor.getNombre());
             stmt.setString(2, tutor.getApellido());
             stmt.setString(3, tutor.getTelefono());
-            stmt.setString(4, tutor.getEmail());
-            stmt.setString(5, tutor.getFechaNacimiento());
+            
+            // Handle empty email
+            if (tutor.getEmail() == null || tutor.getEmail().trim().isEmpty()) {
+                stmt.setNull(4, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setString(4, tutor.getEmail());
+            }
+            
+            // Handle empty fecha_nacimiento
+            if (tutor.getFechaNacimiento() == null || tutor.getFechaNacimiento().trim().isEmpty()) {
+                stmt.setNull(5, java.sql.Types.DATE);
+            } else {
+                stmt.setString(5, tutor.getFechaNacimiento());
+            }
+            
             stmt.setString(6, tutor.getRelacionConUsuario());
             stmt.setBoolean(7, tutor.isEsActivo());
             stmt.setInt(8, tutor.getId());
