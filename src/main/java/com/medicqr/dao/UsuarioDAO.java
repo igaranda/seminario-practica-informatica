@@ -21,12 +21,31 @@ public class UsuarioDAO {
             
             stmt.setString(1, usuario.getNombre());
             stmt.setString(2, usuario.getApellido());
-            stmt.setString(3, usuario.getTelefono());
-            stmt.setString(4, usuario.getEmail());
+            
+            // Handle optional telefono
+            if (usuario.getTelefono() == null || usuario.getTelefono().trim().isEmpty()) {
+                stmt.setString(3, "N/A");
+            } else {
+                stmt.setString(3, usuario.getTelefono());
+            }
+            
+            // Handle optional email
+            if (usuario.getEmail() == null || usuario.getEmail().trim().isEmpty()) {
+                stmt.setString(4, "N/A");
+            } else {
+                stmt.setString(4, usuario.getEmail());
+            }
+            
             stmt.setString(5, usuario.getFechaNacimiento());
             stmt.setInt(6, usuario.getTutor() != null ? usuario.getTutor().getId() : 0);
             stmt.setBoolean(7, usuario.isTieneDiscapacidad());
-            stmt.setString(8, usuario.getTipoDiscapacidad());
+            
+            // Handle optional tipo_discapacidad
+            if (usuario.getTipoDiscapacidad() == null || usuario.getTipoDiscapacidad().trim().isEmpty()) {
+                stmt.setNull(8, java.sql.Types.VARCHAR);
+            } else {
+                stmt.setString(8, usuario.getTipoDiscapacidad());
+            }
             
             int filasAfectadas = stmt.executeUpdate();
             

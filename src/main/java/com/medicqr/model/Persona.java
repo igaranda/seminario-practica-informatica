@@ -74,8 +74,12 @@ public abstract class Persona {
     }
     
     public void setEmail(String email) {
-        if (email != null && email.contains("@")) {
-            this.email = email.trim().toLowerCase();
+        if (email != null && !email.trim().isEmpty()) {
+            if (email.contains("@")) {
+                this.email = email.trim().toLowerCase();
+            }
+        } else {
+            this.email = "";
         }
     }
     
